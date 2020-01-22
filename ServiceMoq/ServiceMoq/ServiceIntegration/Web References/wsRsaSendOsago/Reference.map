@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Results>
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://arm-apo.ss.rgs.ru/Send_OSAGO_Service_Test/Send_OSAGO_Service.dll/wsdl/ISend_OSAGO_Service" filename="ISend_OSAGO_Serviceservice.wsdl" />
+  </Results>
+</DiscoveryClientResultsFile>

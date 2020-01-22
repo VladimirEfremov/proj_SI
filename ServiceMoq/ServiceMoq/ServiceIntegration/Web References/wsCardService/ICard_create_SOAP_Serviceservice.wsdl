@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="ICard_create_SOAP_Serviceservice" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types />
+  <message name="GetNewCardNumber0Request">
+    <part name="CardXMLData" type="xs:string" />
+  </message>
+  <message name="GetNewCardNumber0Response">
+    <part name="return" type="xs:string" />
+  </message>
+  <message name="CardSearch1Request">
+    <part name="Search_Condition" type="xs:string" />
+    <part name="Sys_UID" type="xs:string" />
+  </message>
+  <message name="CardSearch1Response">
+    <part name="return" type="xs:string" />
+  </message>
+  <message name="CardInfo2Request">
+    <part name="Card_Number" type="xs:string" />
+    <part name="Sys_UID" type="xs:string" />
+  </message>
+  <message name="CardInfo2Response">
+    <part name="return" type="xs:string" />
+  </message>
+  <message name="CardNewRequest3Request">
+    <part name="RequestXMLData" type="xs:string" />
+    <part name="Sys_UID" type="xs:string" />
+  </message>
+  <message name="CardNewRequest3Response">
+    <part name="return" type="xs:string" />
+  </message>
+  <message name="CardCancelRequest4Request">
+    <part name="Request_ID" type="xs:int" />
+    <part name="Cancel_Reason" type="xs:string" />
+    <part name="Sys_UID" type="xs:string" />
+  </message>
+  <message name="CardCancelRequest4Response">
+    <part name="return" type="xs:string" />
+  </message>
+  <portType name="ICard_create_SOAP_Service">
+    <operation name="GetNewCardNumber">
+      <input message="tns:GetNewCardNumber0Request" />
+      <output message="tns:GetNewCardNumber0Response" />
+    </operation>
+    <operation name="CardSearch">
+      <input message="tns:CardSearch1Request" />
+      <output message="tns:CardSearch1Response" />
+    </operation>
+    <operation name="CardInfo">
+      <input message="tns:CardInfo2Request" />
+      <output message="tns:CardInfo2Response" />
+    </operation>
+    <operation name="CardNewRequest">
+      <input message="tns:CardNewRequest3Request" />
+      <output message="tns:CardNewRequest3Response" />
+    </operation>
+    <operation name="CardCancelRequest">
+      <input message="tns:CardCancelRequest4Request" />
+      <output message="tns:CardCancelRequest4Response" />
+    </operation>
+  </portType>
+  <binding name="ICard_create_SOAP_Servicebinding" type="tns:ICard_create_SOAP_Service">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <operation name="GetNewCardNumber">
+      <soap:operation soapAction="urn:Card_create_SOAP_Service_c-ICard_create_SOAP_Service#GetNewCardNumber" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:Card_create_SOAP_Service_c-ICard_create_SOAP_Service" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:Card_create_SOAP_Service_c-ICard_create_SOAP_Service" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="CardSearch">
+      <soap:operation soapAction="urn:Card_create_SOAP_Service_c-ICard_create_SOAP_Service#CardSearch" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:Card_create_SOAP_Service_c-ICard_create_SOAP_Service" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:Card_create_SOAP_Service_c-ICard_create_SOAP_Service" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="CardInfo">
+      <soap:operation soapAction="urn:Card_create_SOAP_Service_c-ICard_create_SOAP_Service#CardInfo" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:Card_create_SOAP_Service_c-ICard_create_SOAP_Service" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:Card_create_SOAP_Service_c-ICard_create_SOAP_Service" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="CardNewRequest">
+      <soap:operation soapAction="urn:Card_create_SOAP_Service_c-ICard_create_SOAP_Service#CardNewRequest" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:Card_create_SOAP_Service_c-ICard_create_SOAP_Service" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:Card_create_SOAP_Service_c-ICard_create_SOAP_Service" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="CardCancelRequest">
+      <soap:operation soapAction="urn:Card_create_SOAP_Service_c-ICard_create_SOAP_Service#CardCancelRequest" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:Card_create_SOAP_Service_c-ICard_create_SOAP_Service" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:Card_create_SOAP_Service_c-ICard_create_SOAP_Service" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ICard_create_SOAP_Serviceservice">
+    <port name="ICard_create_SOAP_ServicePort" binding="tns:ICard_create_SOAP_Servicebinding">
+      <soap:address location="http://arm-apo.ss.rgs.ru/Card_create_SOAP_Service_test/Card_create_SOAP_Service.dll/soap/ICard_create_SOAP_Service" />
+    </port>
+  </service>
+</definitions>

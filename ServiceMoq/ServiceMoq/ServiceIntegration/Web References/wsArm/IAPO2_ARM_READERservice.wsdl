@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="IAPO2_ARM_READERservice" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types />
+  <message name="GetDataRequest">
+    <part name="XML" type="xs:string" />
+  </message>
+  <message name="GetDataResponse">
+    <part name="return" type="xs:string" />
+  </message>
+  <message name="GetDataA4Request">
+    <part name="policy_id" type="xs:string" />
+    <part name="actualDate" type="xs:string" />
+  </message>
+  <message name="GetDataA4Response">
+    <part name="return" type="xs:string" />
+  </message>
+  <message name="GetKbmToRequest">
+    <part name="data" type="xs:string" />
+    <part name="CorrelationId" type="xs:string" />
+  </message>
+  <message name="GetKbmToResponse">
+    <part name="return" type="xs:string" />
+  </message>
+  <message name="GetInfoContractsRequest">
+    <part name="request_xml" type="xs:string" />
+  </message>
+  <message name="GetInfoContractsResponse">
+    <part name="return" type="xs:string" />
+  </message>
+  <message name="Check_BSORequest">
+    <part name="BSO_ser" type="xs:string" />
+    <part name="BSO_num" type="xs:string" />
+    <part name="ARM_Agent_ID" type="xs:string" />
+  </message>
+  <message name="Check_BSOResponse">
+    <part name="return" type="xs:int" />
+  </message>
+  <message name="Check_BSO2Request">
+    <part name="BSO_ser" type="xs:string" />
+    <part name="BSO_num" type="xs:string" />
+    <part name="ARM_Agent_ID" type="xs:string" />
+    <part name="bso_type_id" type="xs:int" />
+  </message>
+  <message name="Check_BSO2Response">
+    <part name="return" type="xs:int" />
+  </message>
+  <message name="Check_BSO3Request">
+    <part name="BSO_ser" type="xs:string" />
+    <part name="BSO_num" type="xs:string" />
+  </message>
+  <message name="Check_BSO3Response">
+    <part name="return" type="xs:int" />
+  </message>
+  <message name="Check_BSO4Request">
+    <part name="BSO_ser" type="xs:string" />
+    <part name="BSO_num" type="xs:string" />
+    <part name="BSO_TypeID" type="xs:int" />
+    <part name="Agent_LNR" type="xs:string" />
+    <part name="Agent_SKK" type="xs:string" />
+  </message>
+  <message name="Check_BSO4Response">
+    <part name="return" type="xs:string" />
+  </message>
+  <message name="Check_BSO5Request">
+    <part name="BSO_ser" type="xs:string" />
+    <part name="BSO_num" type="xs:string" />
+    <part name="BSO_TypeID" type="xs:int" />
+    <part name="Agent_LNR" type="xs:string" />
+    <part name="Agent_SKK" type="xs:string" />
+    <part name="Date_of_Issue" type="xs:string" />
+  </message>
+  <message name="Check_BSO5Response">
+    <part name="return" type="xs:string" />
+  </message>
+  <message name="Check_BSO6Request">
+    <part name="BSO_ser" type="xs:string" />
+    <part name="BSO_num" type="xs:string" />
+    <part name="BSO_TypeID" type="xs:int" />
+  </message>
+  <message name="Check_BSO6Response">
+    <part name="return" type="xs:int" />
+  </message>
+  <message name="GetFactDatabyAgentIDRequest">
+    <part name="AgentID" type="xs:string" />
+    <part name="dt" type="xs:TDateTime" />
+  </message>
+  <message name="GetFactDatabyAgentIDResponse">
+    <part name="return" type="xs:string" />
+  </message>
+  <message name="CheckPreferentialExtensionRequest">
+    <part name="request_xml" type="xs:string" />
+  </message>
+  <message name="CheckPreferentialExtensionResponse">
+    <part name="return" type="xs:string" />
+  </message>
+  <message name="GetVPNUserRequest">
+    <part name="ClientIP" type="xs:string" />
+  </message>
+  <message name="GetVPNUserResponse">
+    <part name="return" type="xs:string" />
+  </message>
+  <message name="Block_BSORequest">
+    <part name="BSO_ser" type="xs:string" />
+    <part name="BSO_num" type="xs:string" />
+    <part name="BSO_TypeID" type="xs:int" />
+  </message>
+  <message name="Block_BSOResponse">
+    <part name="return" type="xs:string" />
+  </message>
+  <message name="WriteStatisticRequest">
+    <part name="comment" type="xs:string" />
+  </message>
+  <message name="WriteStatisticResponse">
+    <part name="return" type="xs:int" />
+  </message>
+  <message name="CheckOurNPFClientRequest">
+    <part name="Snils" type="xs:string" />
+  </message>
+  <message name="CheckOurNPFClientResponse">
+    <part name="return" type="xs:int" />
+  </message>
+  <message name="GetNPFAgentRequest">
+    <part name="LNR" type="xs:string" />
+  </message>
+  <message name="GetNPFAgentResponse">
+    <part name="return" type="xs:string" />
+  </message>
+  <message name="PassportIsBadRequest">
+    <part name="PASSP_SERIES" type="xs:string" />
+    <part name="PASSP_NUMBER" type="xs:string" />
+  </message>
+  <message name="PassportIsBadResponse">
+    <part name="return" type="xs:int" />
+  </message>
+  <message name="GetServerDateTimeRequest" />
+  <message name="GetServerDateTimeResponse">
+    <part name="return" type="xs:TDateTime" />
+  </message>
+  <message name="WritePolicyToMGDBRequest">
+    <part name="XML" type="xs:string" />
+  </message>
+  <message name="WritePolicyToMGDBResponse">
+    <part name="return" type="xs:string" />
+  </message>
+  <message name="Check_APO2_Last_VersionsRequest">
+    <part name="XML" type="xs:string" />
+  </message>
+  <message name="Check_APO2_Last_VersionsResponse">
+    <part name="return" type="xs:string" />
+  </message>
+  <message name="GetAgentsByLNR_INNRequest">
+    <part name="LNR_INN" type="xs:string" />
+    <part name="fuz_yur_ii" type="xs:int" />
+  </message>
+  <message name="GetAgentsByLNR_INNResponse">
+    <part name="return" type="xs:string" />
+  </message>
+  <message name="ConfirmModifyRequest">
+    <part name="Series" type="xs:string" />
+    <part name="Number" type="xs:string" />
+    <part name="AgentLnr" type="xs:string" />
+  </message>
+  <message name="ConfirmModifyResponse">
+    <part name="return" type="xs:boolean" />
+  </message>
+  <message name="IsAllowedModifyRequest">
+    <part name="Series" type="xs:string" />
+    <part name="Number" type="xs:string" />
+    <part name="AgentLnr" type="xs:string" />
+  </message>
+  <message name="IsAllowedModifyResponse">
+    <part name="return" type="xs:boolean" />
+  </message>
+  <message name="WriteToSplunkRequest">
+    <part name="CorrelationId" type="xs:string" />
+    <part name="Action" type="xs:string" />
+    <part name="Message" type="xs:string" />
+    <part name="host" type="xs:string" />
+    <part name="ext" type="xs:string" />
+  </message>
+  <message name="WriteToSplunkResponse" />
+  <message name="WriteToSplunk2Request">
+    <part name="Index" type="xs:string" />
+    <part name="ParamsList" type="xs:string" />
+    <part name="ext" type="xs:string" />
+    <part name="SpErrors" type="xs:string" />
+  </message>
+  <message name="WriteToSplunk2Response">
+    <part name="return" type="xs:string" />
+  </message>
+  <portType name="IAPO2_ARM_READER">
+    <operation name="GetData">
+      <input message="tns:GetDataRequest" />
+      <output message="tns:GetDataResponse" />
+    </operation>
+    <operation name="GetDataA4">
+      <input message="tns:GetDataA4Request" />
+      <output message="tns:GetDataA4Response" />
+    </operation>
+    <operation name="GetKbmTo">
+      <input message="tns:GetKbmToRequest" />
+      <output message="tns:GetKbmToResponse" />
+    </operation>
+    <operation name="GetInfoContracts">
+      <input message="tns:GetInfoContractsRequest" />
+      <output message="tns:GetInfoContractsResponse" />
+    </operation>
+    <operation name="Check_BSO">
+      <input message="tns:Check_BSORequest" />
+      <output message="tns:Check_BSOResponse" />
+    </operation>
+    <operation name="Check_BSO2">
+      <input message="tns:Check_BSO2Request" />
+      <output message="tns:Check_BSO2Response" />
+    </operation>
+    <operation name="Check_BSO3">
+      <input message="tns:Check_BSO3Request" />
+      <output message="tns:Check_BSO3Response" />
+    </operation>
+    <operation name="Check_BSO4">
+      <input message="tns:Check_BSO4Request" />
+      <output message="tns:Check_BSO4Response" />
+    </operation>
+    <operation name="Check_BSO5">
+      <input message="tns:Check_BSO5Request" />
+      <output message="tns:Check_BSO5Response" />
+    </operation>
+    <operation name="Check_BSO6">
+      <input message="tns:Check_BSO6Request" />
+      <output message="tns:Check_BSO6Response" />
+    </operation>
+    <operation name="GetFactDatabyAgentID">
+      <input message="tns:GetFactDatabyAgentIDRequest" />
+      <output message="tns:GetFactDatabyAgentIDResponse" />
+    </operation>
+    <operation name="CheckPreferentialExtension">
+      <input message="tns:CheckPreferentialExtensionRequest" />
+      <output message="tns:CheckPreferentialExtensionResponse" />
+    </operation>
+    <operation name="GetVPNUser">
+      <input message="tns:GetVPNUserRequest" />
+      <output message="tns:GetVPNUserResponse" />
+    </operation>
+    <operation name="Block_BSO">
+      <input message="tns:Block_BSORequest" />
+      <output message="tns:Block_BSOResponse" />
+    </operation>
+    <operation name="WriteStatistic">
+      <input message="tns:WriteStatisticRequest" />
+      <output message="tns:WriteStatisticResponse" />
+    </operation>
+    <operation name="CheckOurNPFClient">
+      <input message="tns:CheckOurNPFClientRequest" />
+      <output message="tns:CheckOurNPFClientResponse" />
+    </operation>
+    <operation name="GetNPFAgent">
+      <input message="tns:GetNPFAgentRequest" />
+      <output message="tns:GetNPFAgentResponse" />
+    </operation>
+    <operation name="PassportIsBad">
+      <input message="tns:PassportIsBadRequest" />
+      <output message="tns:PassportIsBadResponse" />
+    </operation>
+    <operation name="GetServerDateTime">
+      <input message="tns:GetServerDateTimeRequest" />
+      <output message="tns:GetServerDateTimeResponse" />
+    </operation>
+    <operation name="WritePolicyToMGDB">
+      <input message="tns:WritePolicyToMGDBRequest" />
+      <output message="tns:WritePolicyToMGDBResponse" />
+    </operation>
+    <operation name="Check_APO2_Last_Versions">
+      <input message="tns:Check_APO2_Last_VersionsRequest" />
+      <output message="tns:Check_APO2_Last_VersionsResponse" />
+    </operation>
+    <operation name="GetAgentsByLNR_INN">
+      <input message="tns:GetAgentsByLNR_INNRequest" />
+      <output message="tns:GetAgentsByLNR_INNResponse" />
+    </operation>
+    <operation name="ConfirmModify">
+      <input message="tns:ConfirmModifyRequest" />
+      <output message="tns:ConfirmModifyResponse" />
+    </operation>
+    <operation name="IsAllowedModify">
+      <input message="tns:IsAllowedModifyRequest" />
+      <output message="tns:IsAllowedModifyResponse" />
+    </operation>
+    <operation name="WriteToSplunk">
+      <input message="tns:WriteToSplunkRequest" />
+      <output message="tns:WriteToSplunkResponse" />
+    </operation>
+    <operation name="WriteToSplunk2">
+      <input message="tns:WriteToSplunk2Request" />
+      <output message="tns:WriteToSplunk2Response" />
+    </operation>
+  </portType>
+  <binding name="IAPO2_ARM_READERbinding" type="tns:IAPO2_ARM_READER">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <operation name="GetData">
+      <soap:operation soapAction="urn:APO2_ARM_READER_c-IAPO2_ARM_READER#GetData" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="GetDataA4">
+      <soap:operation soapAction="urn:APO2_ARM_READER_c-IAPO2_ARM_READER#GetDataA4" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="GetKbmTo">
+      <soap:operation soapAction="urn:APO2_ARM_READER_c-IAPO2_ARM_READER#GetKbmTo" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="GetInfoContracts">
+      <soap:operation soapAction="urn:APO2_ARM_READER_c-IAPO2_ARM_READER#GetInfoContracts" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="Check_BSO">
+      <soap:operation soapAction="urn:APO2_ARM_READER_c-IAPO2_ARM_READER#Check_BSO" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="Check_BSO2">
+      <soap:operation soapAction="urn:APO2_ARM_READER_c-IAPO2_ARM_READER#Check_BSO2" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="Check_BSO3">
+      <soap:operation soapAction="urn:APO2_ARM_READER_c-IAPO2_ARM_READER#Check_BSO3" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="Check_BSO4">
+      <soap:operation soapAction="urn:APO2_ARM_READER_c-IAPO2_ARM_READER#Check_BSO4" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="Check_BSO5">
+      <soap:operation soapAction="urn:APO2_ARM_READER_c-IAPO2_ARM_READER#Check_BSO5" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="Check_BSO6">
+      <soap:operation soapAction="urn:APO2_ARM_READER_c-IAPO2_ARM_READER#Check_BSO6" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="GetFactDatabyAgentID">
+      <soap:operation soapAction="urn:APO2_ARM_READER_c-IAPO2_ARM_READER#GetFactDatabyAgentID" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="CheckPreferentialExtension">
+      <soap:operation soapAction="urn:APO2_ARM_READER_c-IAPO2_ARM_READER#CheckPreferentialExtension" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="GetVPNUser">
+      <soap:operation soapAction="urn:APO2_ARM_READER_c-IAPO2_ARM_READER#GetVPNUser" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="Block_BSO">
+      <soap:operation soapAction="urn:APO2_ARM_READER_c-IAPO2_ARM_READER#Block_BSO" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="WriteStatistic">
+      <soap:operation soapAction="urn:APO2_ARM_READER_c-IAPO2_ARM_READER#WriteStatistic" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="CheckOurNPFClient">
+      <soap:operation soapAction="urn:APO2_ARM_READER_c-IAPO2_ARM_READER#CheckOurNPFClient" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="GetNPFAgent">
+      <soap:operation soapAction="urn:APO2_ARM_READER_c-IAPO2_ARM_READER#GetNPFAgent" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="PassportIsBad">
+      <soap:operation soapAction="urn:APO2_ARM_READER_c-IAPO2_ARM_READER#PassportIsBad" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="GetServerDateTime">
+      <soap:operation soapAction="urn:APO2_ARM_READER_c-IAPO2_ARM_READER#GetServerDateTime" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="WritePolicyToMGDB">
+      <soap:operation soapAction="urn:APO2_ARM_READER_c-IAPO2_ARM_READER#WritePolicyToMGDB" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="Check_APO2_Last_Versions">
+      <soap:operation soapAction="urn:APO2_ARM_READER_c-IAPO2_ARM_READER#Check_APO2_Last_Versions" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="GetAgentsByLNR_INN">
+      <soap:operation soapAction="urn:APO2_ARM_READER_c-IAPO2_ARM_READER#GetAgentsByLNR_INN" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="ConfirmModify">
+      <soap:operation soapAction="urn:APO2_ARM_READER_c-IAPO2_ARM_READER#ConfirmModify" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="IsAllowedModify">
+      <soap:operation soapAction="urn:APO2_ARM_READER_c-IAPO2_ARM_READER#IsAllowedModify" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="WriteToSplunk">
+      <soap:operation soapAction="urn:APO2_ARM_READER_c-IAPO2_ARM_READER#WriteToSplunk" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="WriteToSplunk2">
+      <soap:operation soapAction="urn:APO2_ARM_READER_c-IAPO2_ARM_READER#WriteToSplunk2" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:APO2_ARM_READER_c-IAPO2_ARM_READER" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="IAPO2_ARM_READERservice">
+    <port name="IAPO2_ARM_READERPort" binding="tns:IAPO2_ARM_READERbinding">
+      <soap:address location="http://arm-apo.ss.rgs.ru/apo2_arm_reader.dll/soap/IAPO2_ARM_READER" />
+    </port>
+  </service>
+</definitions>

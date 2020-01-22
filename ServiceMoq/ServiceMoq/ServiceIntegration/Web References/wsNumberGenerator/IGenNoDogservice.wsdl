@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="IGenNoDogservice" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types />
+  <message name="GenerateSeriesNumber0Request">
+    <part name="XML" type="xs:string" />
+  </message>
+  <message name="GenerateSeriesNumber0Response">
+    <part name="return" type="xs:string" />
+  </message>
+  <portType name="IGenNoDog">
+    <operation name="GenerateSeriesNumber">
+      <input message="tns:GenerateSeriesNumber0Request" />
+      <output message="tns:GenerateSeriesNumber0Response" />
+    </operation>
+  </portType>
+  <binding name="IGenNoDogbinding" type="tns:IGenNoDog">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <operation name="GenerateSeriesNumber">
+      <soap:operation soapAction="urn:GenNoDog_c-IGenNoDog#GenerateSeriesNumber" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:GenNoDog_c-IGenNoDog" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:GenNoDog_c-IGenNoDog" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="IGenNoDogservice">
+    <port name="IGenNoDogPort" binding="tns:IGenNoDogbinding">
+      <soap:address location="http://arm-apo.ss.rgs.ru/GenNoDog_test/GenNoDog.dll/soap/IGenNoDog" />
+    </port>
+  </service>
+</definitions>

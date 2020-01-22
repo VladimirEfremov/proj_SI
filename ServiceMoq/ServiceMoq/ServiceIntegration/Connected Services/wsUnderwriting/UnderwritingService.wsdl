@@ -1,0 +1,2249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="Rgs.Ufo" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="UnderwritingService" targetNamespace="Rgs.Ufo" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="WSHttpBinding_IUnderwritingService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+            <sp:IncludeTimestamp />
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <sp:SignedSupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:UsernameToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+              <wsp:Policy>
+                <sp:WssUsernameToken10 />
+              </wsp:Policy>
+            </sp:UsernameToken>
+          </wsp:Policy>
+        </sp:SignedSupportingTokens>
+        <sp:Wss11 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy />
+        </sp:Wss11>
+        <sp:Trust10 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:MustSupportIssuedTokens />
+            <sp:RequireClientEntropy />
+            <sp:RequireServerEntropy />
+          </wsp:Policy>
+        </sp:Trust10>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="CustomBinding_IUnderwritingService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+            <sp:IncludeTimestamp />
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <sp:SignedSupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:UsernameToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+              <wsp:Policy>
+                <sp:WssUsernameToken10 />
+              </wsp:Policy>
+            </sp:UsernameToken>
+          </wsp:Policy>
+        </sp:SignedSupportingTokens>
+        <sp:Wss11 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy />
+        </sp:Wss11>
+        <sp:Trust10 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:MustSupportIssuedTokens />
+            <sp:RequireClientEntropy />
+            <sp:RequireServerEntropy />
+          </wsp:Policy>
+        </sp:Trust10>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="MetadataExchangeHttpsBinding_IUnderwritingService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" elementFormDefault="qualified" targetNamespace="Rgs.Ufo" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xs:import namespace="RGS.UFO" />
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/Rgs.UFO.Model.Enums" />
+      <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xs:element name="Withdraw">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="quotationId" type="ser:guid" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="WithdrawResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="RGS.UFO" minOccurs="0" name="WithdrawResult" nillable="true" type="q1:OperationResultOfContractStatusNamesmxVaabBO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CheckStatus">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="quotationId" type="ser:guid" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CheckStatusResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q2="RGS.UFO" minOccurs="0" name="CheckStatusResult" nillable="true" type="q2:OperationResultOfQuotationStateInfooTurZuT3" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="QuotationStateInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DateOfApproval" nillable="true" type="xs:dateTime">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="IsChanged" type="xs:boolean" />
+          <xs:element xmlns:q3="Rgs.Ufo" minOccurs="0" name="Quotation" nillable="true" type="q3:Quotation" />
+          <xs:element minOccurs="0" name="QuotationId" type="ser:guid" />
+          <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Rgs.UFO.Model.Enums" minOccurs="0" name="State" type="q4:ContractStatusNames" />
+          <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Rgs.UFO.Model.Enums" minOccurs="0" name="Status" type="q5:ContractStatusNames" />
+          <xs:element xmlns:q6="Rgs.Ufo" minOccurs="0" name="VehicleStateInfos" nillable="true" type="q6:ArrayOfVehicleStateInfo" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q7="Rgs.Ufo" name="QuotationStateInfo" nillable="true" type="q7:QuotationStateInfo" />
+      <xs:complexType name="Quotation">
+        <xs:sequence>
+          <xs:element xmlns:q8="Rgs.Ufo" minOccurs="0" name="Beneficiary" nillable="true" type="q8:Beneficiary" />
+          <xs:element minOccurs="0" name="Id" type="ser:guid" />
+          <xs:element xmlns:q9="Rgs.Ufo" minOccurs="0" name="Insurant" nillable="true" type="q9:Insurant" />
+          <xs:element minOccurs="0" name="PolicyPaymentsCount" type="xs:int" />
+          <xs:element minOccurs="0" name="PolicyPremiumPrefProlWithAddAgreements" nillable="true" type="xs:decimal">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="PolicyPremiumWithAddAgreements" nillable="true" type="xs:decimal">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q10="Rgs.Ufo" minOccurs="0" name="UsagePeriods" nillable="true" type="q10:ArrayOfUsagePeriod" />
+          <xs:element xmlns:q11="Rgs.Ufo" minOccurs="0" name="Vehicles" nillable="true" type="q11:ArrayOfVehicleResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q12="Rgs.Ufo" name="Quotation" nillable="true" type="q12:Quotation" />
+      <xs:complexType name="Beneficiary">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BirthDate" nillable="true" type="xs:dateTime">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q13="Rgs.Ufo" minOccurs="0" name="Document" nillable="true" type="q13:CommonDocument" />
+          <xs:element minOccurs="0" name="Inn" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Ogrn" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Ogrnip" nillable="true" type="xs:string" />
+          <xs:element xmlns:q14="Rgs.Ufo" minOccurs="0" name="Organization" nillable="true" type="q14:LegalEntity" />
+          <xs:element xmlns:q15="Rgs.Ufo" minOccurs="0" name="Person" nillable="true" type="q15:PersonName" />
+          <xs:element minOccurs="0" name="RegistrationAddressCode" nillable="true" type="xs:string" />
+          <xs:element xmlns:q16="Rgs.Ufo" minOccurs="0" name="RegistrationAddressCompany" nillable="true" type="q16:Address" />
+          <xs:element name="SubjectType" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q17="Rgs.Ufo" name="Beneficiary" nillable="true" type="q17:Beneficiary" />
+      <xs:complexType name="CommonDocument">
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:q18="Rgs.Ufo" base="q18:Document">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="TypeId" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element xmlns:q19="Rgs.Ufo" name="CommonDocument" nillable="true" type="q19:CommonDocument" />
+      <xs:complexType name="Document">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Number" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Series" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q20="Rgs.Ufo" name="Document" nillable="true" type="q20:Document" />
+      <xs:complexType name="LegalEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OrgForm" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OrgFormFull" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q21="Rgs.Ufo" name="LegalEntity" nillable="true" type="q21:LegalEntity" />
+      <xs:complexType name="PersonName">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SecondName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q22="Rgs.Ufo" name="PersonName" nillable="true" type="q22:PersonName" />
+      <xs:complexType name="Address">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Area" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Building" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CountryCode" type="xs:int" />
+          <xs:element minOccurs="0" name="Flat" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FullAddressCompany" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="House" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="KladrCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Place" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PostCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Region" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Street" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q23="Rgs.Ufo" name="Address" nillable="true" type="q23:Address" />
+      <xs:complexType name="Insurant">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AddressIndex" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BirthDate" nillable="true" type="xs:dateTime">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q24="Rgs.Ufo" minOccurs="0" name="Document" nillable="true" type="q24:InsurantDocument" />
+          <xs:element minOccurs="0" name="DocumentIssueDate" nillable="true" type="xs:dateTime">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="DocumentIssuePlace" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FullAddress" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="INN" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="InsurantContactPhone" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsKeyClient" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsResident" nillable="true" type="xs:boolean">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="KladrCode" nillable="true" type="xs:string" />
+          <xs:element xmlns:q25="Rgs.Ufo" minOccurs="0" name="Name" nillable="true" type="q25:PersonName" />
+          <xs:element minOccurs="0" name="OGRN" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OGRNIP" nillable="true" type="xs:string" />
+          <xs:element xmlns:q26="Rgs.Ufo" minOccurs="0" name="Organization" nillable="true" type="q26:LegalEntity" />
+          <xs:element xmlns:q27="Rgs.Ufo" minOccurs="0" name="PrevDocument" nillable="true" type="q27:InsurantDocument" />
+          <xs:element minOccurs="0" name="PrevINN" nillable="true" type="xs:string" />
+          <xs:element xmlns:q28="Rgs.Ufo" minOccurs="0" name="PrevName" nillable="true" type="q28:PersonName" />
+          <xs:element xmlns:q29="Rgs.Ufo" minOccurs="0" name="PrevOrganization" nillable="true" type="q29:LegalEntity" />
+          <xs:element name="SubjectTypeId" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q30="Rgs.Ufo" name="Insurant" nillable="true" type="q30:Insurant" />
+      <xs:complexType name="InsurantDocument">
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:q31="Rgs.Ufo" base="q31:Document">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="DateOfEntry" nillable="true" type="xs:dateTime">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="0" name="LengthOfDayEndDate" nillable="true" type="xs:dateTime">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="0" name="LengthOfDayStartDate" nillable="true" type="xs:dateTime">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="TypeId" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element xmlns:q32="Rgs.Ufo" name="InsurantDocument" nillable="true" type="q32:InsurantDocument" />
+      <xs:complexType name="ArrayOfUsagePeriod">
+        <xs:sequence>
+          <xs:element xmlns:q33="Rgs.Ufo" minOccurs="0" maxOccurs="unbounded" name="UsagePeriod" nillable="true" type="q33:UsagePeriod" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q34="Rgs.Ufo" name="ArrayOfUsagePeriod" nillable="true" type="q34:ArrayOfUsagePeriod" />
+      <xs:complexType name="UsagePeriod">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="UsagePeriodDsagoVehicleLiability" nillable="true" type="xs:decimal">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="UsagePeriodDsagoVehiclePremium" nillable="true" type="xs:decimal">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="UsagePeriodEndDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="UsagePeriodKaskoDmsLiability" nillable="true" type="xs:decimal">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="UsagePeriodKaskoDmsPremium" nillable="true" type="xs:decimal">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="UsagePeriodKaskoNsLiability" nillable="true" type="xs:decimal">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="UsagePeriodKaskoNsPremium" nillable="true" type="xs:decimal">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="UsagePeriodKaskoPndLiabilityExp" nillable="true" type="xs:decimal">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="UsagePeriodKaskoPndLiabilityTech" nillable="true" type="xs:decimal">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="UsagePeriodKaskoPndPremiumExp" nillable="true" type="xs:decimal">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="UsagePeriodKaskoPndPremiumTech" nillable="true" type="xs:decimal">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="UsagePeriodKaskoVehicleLiability" nillable="true" type="xs:decimal">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="UsagePeriodKaskoVehiclePremium" nillable="true" type="xs:decimal">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="UsagePeriodKaskoVehiclePremiumPrefProl" nillable="true" type="xs:decimal">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="UsagePeriodNumber" type="xs:int" />
+          <xs:element minOccurs="0" name="UsagePeriodStartDate" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q35="Rgs.Ufo" name="UsagePeriod" nillable="true" type="q35:UsagePeriod" />
+      <xs:complexType name="ArrayOfVehicleResult">
+        <xs:sequence>
+          <xs:element xmlns:q36="Rgs.Ufo" minOccurs="0" maxOccurs="unbounded" name="VehicleResult" nillable="true" type="q36:VehicleResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q37="Rgs.Ufo" name="ArrayOfVehicleResult" nillable="true" type="q37:ArrayOfVehicleResult" />
+      <xs:complexType name="VehicleResult">
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:q38="Rgs.Ufo" base="q38:VehicleCalculationResult">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="AdmittedLimitId" type="xs:int" />
+              <xs:element xmlns:q39="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="AlarmIds" nillable="true" type="q39:ArrayOfstring" />
+              <xs:element minOccurs="0" name="AllowWeight" nillable="true" type="xs:int">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="0" name="Cost" nillable="true" type="xs:decimal">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="0" name="Files" nillable="true" type="q38:ArrayOfFile" />
+              <xs:element minOccurs="0" name="Franchise" nillable="true" type="q38:Franchise" />
+              <xs:element minOccurs="0" name="GroupId" nillable="true" type="ser:guid">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="0" name="GroupName" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="0" name="IsNeedAddAgreement5" type="xs:boolean" />
+              <xs:element minOccurs="0" name="IsPrefProlongation" type="xs:boolean" />
+              <xs:element minOccurs="0" name="Liability" nillable="true" type="xs:decimal">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="0" name="PaymentMethodId" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="SeatCount" nillable="true" type="xs:int">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="0" name="SellerCommentOnTS" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="UnderwriterCommentOnTS" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="UsagePurposeId" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element xmlns:q40="Rgs.Ufo" name="VehicleResult" nillable="true" type="q40:VehicleResult" />
+      <xs:complexType name="VehicleCalculationResult">
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:q41="Rgs.Ufo" base="q41:VehicleBaseDto">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="AccidentLiability" type="xs:decimal" />
+              <xs:element minOccurs="0" name="AccidentPremium" type="xs:decimal" />
+              <xs:element minOccurs="0" name="AddEquipments" nillable="true" type="q41:ArrayOfAddEquipmentResponse" />
+              <xs:element minOccurs="0" name="AdmitResults" nillable="true" type="q41:ArrayOfAdmitResultsDto">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element xmlns:q42="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="AlarmMessageIds" nillable="true" type="q42:ArrayOfstring" />
+              <xs:element xmlns:q43="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="AlarmMessages" nillable="true" type="q43:ArrayOfstring" />
+              <xs:element xmlns:q44="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="CalculationErrors" nillable="true" type="q44:ArrayOfstring" />
+              <xs:element minOccurs="0" name="CalculationResultId" type="ser:guid" />
+              <xs:element minOccurs="0" name="ChangedVzd" nillable="true" type="xs:decimal">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="0" name="ContractId" type="ser:guid" />
+              <xs:element minOccurs="0" name="DamageSumLimit1" nillable="true" type="xs:decimal">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="0" name="DamageSumLimit2" nillable="true" type="xs:decimal">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="0" name="DmsPremium" type="xs:decimal" />
+              <xs:element minOccurs="0" name="DsagoLiability" type="xs:decimal" />
+              <xs:element minOccurs="0" name="DsagoVehiclePremium" type="xs:decimal" />
+              <xs:element minOccurs="0" name="FranchiseJokerSum" nillable="true" type="xs:decimal">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="0" name="InspectionNeeded" nillable="true" type="xs:boolean">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="0" name="IsRenewalContract" type="xs:boolean" />
+              <xs:element minOccurs="0" name="K" nillable="true" type="q41:Coefficients" />
+              <xs:element minOccurs="0" name="KaskoTotal" nillable="true" type="xs:decimal">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="0" name="KaskoVehicleGapLiability" nillable="true" type="xs:decimal">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="0" name="KaskoVehicleGapPremium" nillable="true" type="xs:decimal">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="0" name="KbmRsaRequestId" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="LastRegistrationTransdekraDate" nillable="true" type="xs:dateTime">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="0" name="LiabilityCostProportion" type="xs:decimal" />
+              <xs:element minOccurs="0" name="Payment1" nillable="true" type="q41:PaymentDto" />
+              <xs:element minOccurs="0" name="Payment2" nillable="true" type="q41:PaymentDto" />
+              <xs:element minOccurs="0" name="Payment3" nillable="true" type="q41:PaymentDto" />
+              <xs:element minOccurs="0" name="Payment4" nillable="true" type="q41:PaymentDto" />
+              <xs:element minOccurs="0" name="PlanVzd" nillable="true" type="xs:decimal">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="0" name="PndLiabilityExp" type="xs:decimal" />
+              <xs:element minOccurs="0" name="PndLiabilityTech" type="xs:decimal" />
+              <xs:element minOccurs="0" name="PndPremiumExp" type="xs:decimal" />
+              <xs:element minOccurs="0" name="PndPremiumTech" type="xs:decimal" />
+              <xs:element minOccurs="0" name="PolicyPeriodInMonths" nillable="true" type="xs:int">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="0" name="PrefProlongError" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="PrevContractIds" nillable="true" type="q41:ArrayOfPrevContractIdDto" />
+              <xs:element minOccurs="0" name="PrevPolicy" nillable="true" type="q41:PrevPolicyDto" />
+              <xs:element minOccurs="0" name="Reservations" nillable="true" type="q41:ArrayOfReservationCoefficient" />
+              <xs:element minOccurs="0" name="RiskObjects" nillable="true" type="q41:ArrayOfRiskObject" />
+              <xs:element minOccurs="0" name="SellerCommentOnTS" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="TransdekraMaxPrice" nillable="true" type="xs:decimal">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="0" name="TransdekraMinPrice" nillable="true" type="xs:decimal">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="0" name="TransdekraPrice" nillable="true" type="xs:decimal">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="0" name="UnderwriterCommentOnTS" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="UnderwritingRequirements" nillable="true" type="q41:KaskoUnderwritingRequirements" />
+              <xs:element minOccurs="0" name="UsagePeriodsForPolicy" nillable="true" type="q41:ArrayOfUsagePeriod" />
+              <xs:element xmlns:q45="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="UwMessagesToAgent" nillable="true" type="q45:ArrayOfstring" />
+              <xs:element xmlns:q46="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="UwMessagesToClient" nillable="true" type="q46:ArrayOfstring" />
+              <xs:element xmlns:q47="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="UwSecurityMessages" nillable="true" type="q47:ArrayOfstring" />
+              <xs:element xmlns:q48="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="UwUnderwriterMessages" nillable="true" type="q48:ArrayOfstring" />
+              <xs:element minOccurs="0" name="VehAudatexCalcCount" nillable="true" type="xs:int">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="0" name="VehAudatexDaysFromLastCalc" nillable="true" type="xs:int">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="0" name="VehAudatexTotal" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="0" name="VehCoverages" nillable="true" type="q41:ArrayOfVehCoveragesDto" />
+              <xs:element minOccurs="0" name="VehicleAge" nillable="true" type="xs:int">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="0" name="VehicleCalculatedFranchiseAbs" nillable="true" type="xs:decimal">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="0" name="VehicleGapCoeff" nillable="true" type="xs:decimal">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="0" name="VehiclePremium" type="xs:decimal" />
+              <xs:element minOccurs="0" name="VehiclePremiumCalcType" nillable="true" type="xs:int">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="0" name="VehiclePremiumCalcTypeDesc" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="VehiclePremiumPrefProlCoeff" nillable="true" type="xs:decimal">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="0" name="VehiclePremiumPrefProlongation" nillable="true" type="xs:decimal">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element xmlns:q49="Rgs.Ufo" name="VehicleCalculationResult" nillable="true" type="q49:VehicleCalculationResult" />
+      <xs:complexType name="VehicleBaseDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ChassisNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FrameNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PIN" nillable="true" type="xs:string" />
+          <xs:element xmlns:q50="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ReservationIds" nillable="true" type="q50:ArrayOfstring" />
+          <xs:element minOccurs="0" name="VIN" nillable="true" type="xs:string" />
+          <xs:element name="VehNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q51="Rgs.Ufo" name="VehicleBaseDto" nillable="true" type="q51:VehicleBaseDto" />
+      <xs:complexType name="ArrayOfAddEquipmentResponse">
+        <xs:sequence>
+          <xs:element xmlns:q52="Rgs.Ufo" minOccurs="0" maxOccurs="unbounded" name="AddEquipmentResponse" nillable="true" type="q52:AddEquipmentResponse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q53="Rgs.Ufo" name="ArrayOfAddEquipmentResponse" nillable="true" type="q53:ArrayOfAddEquipmentResponse" />
+      <xs:complexType name="AddEquipmentResponse">
+        <xs:sequence>
+          <xs:element name="Id" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Premium" nillable="true" type="xs:decimal">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q54="Rgs.Ufo" minOccurs="0" name="AddEquipmentUsagePeriods" nillable="true" type="q54:ArrayOfAddEquipmentUsagePeriod">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q55="Rgs.Ufo" name="AddEquipmentResponse" nillable="true" type="q55:AddEquipmentResponse" />
+      <xs:complexType name="ArrayOfAddEquipmentUsagePeriod">
+        <xs:sequence>
+          <xs:element xmlns:q56="Rgs.Ufo" minOccurs="0" maxOccurs="unbounded" name="AddEquipmentUsagePeriod" nillable="true" type="q56:AddEquipmentUsagePeriod" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q57="Rgs.Ufo" name="ArrayOfAddEquipmentUsagePeriod" nillable="true" type="q57:ArrayOfAddEquipmentUsagePeriod" />
+      <xs:complexType name="AddEquipmentUsagePeriod">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AEUsagePeriodNumber" nillable="true" type="xs:int">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="AEUsagePeriodStartDate" nillable="true" type="xs:dateTime">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="AEUsagePeriodEndDate" nillable="true" type="xs:dateTime">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="AEUsagePeriodLiability" nillable="true" type="xs:decimal">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="AEUsagePeriodPremium" nillable="true" type="xs:decimal">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q58="Rgs.Ufo" name="AddEquipmentUsagePeriod" nillable="true" type="q58:AddEquipmentUsagePeriod" />
+      <xs:complexType name="ArrayOfAdmitResultsDto">
+        <xs:sequence>
+          <xs:element xmlns:q59="Rgs.Ufo" minOccurs="0" maxOccurs="unbounded" name="AdmitResultsDto" nillable="true" type="q59:AdmitResultsDto" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q60="Rgs.Ufo" name="ArrayOfAdmitResultsDto" nillable="true" type="q60:ArrayOfAdmitResultsDto" />
+      <xs:complexType name="AdmitResultsDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DriverId" nillable="true" type="xs:string" />
+          <xs:element xmlns:q61="Rgs.Ufo" minOccurs="0" name="DriverPrevContracts" nillable="true" type="q61:ArrayOfDriverPrevContractDto" />
+          <xs:element minOccurs="0" name="K1Driver" type="xs:decimal" />
+          <xs:element minOccurs="0" name="K6Driver" type="xs:decimal" />
+          <xs:element minOccurs="0" name="KbmRsaRequestId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q62="Rgs.Ufo" name="AdmitResultsDto" nillable="true" type="q62:AdmitResultsDto" />
+      <xs:complexType name="ArrayOfDriverPrevContractDto">
+        <xs:sequence>
+          <xs:element xmlns:q63="Rgs.Ufo" minOccurs="0" maxOccurs="unbounded" name="DriverPrevContractDto" nillable="true" type="q63:DriverPrevContractDto" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q64="Rgs.Ufo" name="ArrayOfDriverPrevContractDto" nillable="true" type="q64:ArrayOfDriverPrevContractDto" />
+      <xs:complexType name="DriverPrevContractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="K6_ContractId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="K6_IsCalc" type="xs:boolean" />
+          <xs:element minOccurs="0" name="K6_SystemId" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q65="Rgs.Ufo" name="DriverPrevContractDto" nillable="true" type="q65:DriverPrevContractDto" />
+      <xs:complexType name="Coefficients">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="K1" type="xs:decimal" />
+          <xs:element minOccurs="0" name="K1D" type="xs:decimal" />
+          <xs:element minOccurs="0" name="K2" type="xs:decimal" />
+          <xs:element minOccurs="0" name="K3" type="xs:decimal" />
+          <xs:element minOccurs="0" name="K4" type="xs:decimal" />
+          <xs:element minOccurs="0" name="K5" type="xs:decimal" />
+          <xs:element minOccurs="0" name="K6" type="xs:decimal" />
+          <xs:element minOccurs="0" name="K7A" type="xs:decimal" />
+          <xs:element minOccurs="0" name="KA" type="xs:decimal" />
+          <xs:element minOccurs="0" name="KAR" type="xs:decimal" />
+          <xs:element minOccurs="0" name="KAct" type="xs:decimal" />
+          <xs:element minOccurs="0" name="KB" type="xs:decimal" />
+          <xs:element minOccurs="0" name="KC" type="xs:decimal" />
+          <xs:element minOccurs="0" name="KPR" type="xs:decimal" />
+          <xs:element minOccurs="0" name="KPRisk" type="xs:decimal" />
+          <xs:element minOccurs="0" name="KR" type="xs:decimal" />
+          <xs:element minOccurs="0" name="KRS" type="xs:decimal" />
+          <xs:element minOccurs="0" name="KReservation" type="xs:decimal" />
+          <xs:element minOccurs="0" name="KSR" type="xs:decimal" />
+          <xs:element minOccurs="0" name="KU" type="xs:decimal" />
+          <xs:element minOccurs="0" name="KVozv" type="xs:decimal" />
+          <xs:element minOccurs="0" name="KY" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Kans" type="xs:decimal" />
+          <xs:element minOccurs="0" name="TB" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Tariff" type="xs:decimal" />
+          <xs:element minOccurs="0" name="TariffPrefProlongation" nillable="true" type="xs:decimal">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q66="Rgs.Ufo" name="Coefficients" nillable="true" type="q66:Coefficients" />
+      <xs:complexType name="PaymentDto">
+        <xs:sequence>
+          <xs:element name="Date" nillable="true" type="xs:string" />
+          <xs:element name="Value" type="xs:decimal" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q67="Rgs.Ufo" name="PaymentDto" nillable="true" type="q67:PaymentDto" />
+      <xs:complexType name="ArrayOfPrevContractIdDto">
+        <xs:sequence>
+          <xs:element xmlns:q68="Rgs.Ufo" minOccurs="0" maxOccurs="unbounded" name="PrevContractIdDto" nillable="true" type="q68:PrevContractIdDto" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q69="Rgs.Ufo" name="ArrayOfPrevContractIdDto" nillable="true" type="q69:ArrayOfPrevContractIdDto" />
+      <xs:complexType name="PrevContractIdDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="K5_ContractId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="K5_SystemId" type="xs:int" />
+          <xs:element minOccurs="0" name="K6_ContractId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="K6_IsCalc" nillable="true" type="xs:boolean">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="K6_SystemId" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q70="Rgs.Ufo" name="PrevContractIdDto" nillable="true" type="q70:PrevContractIdDto" />
+      <xs:complexType name="PrevPolicyDto">
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:q71="Rgs.Ufo" base="q71:Document">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="EndDate" nillable="true" type="xs:dateTime">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="0" name="KaskoLiability" nillable="true" type="xs:decimal">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="0" name="KaskoPremium" nillable="true" type="xs:decimal">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="0" name="NumberLoss" nillable="true" type="xs:int">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="0" name="PaySumLoss" nillable="true" type="xs:decimal">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="0" name="PolicyId" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="ProgramId" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="ProlongCheck" nillable="true" type="xs:boolean">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="0" name="SystemId" type="xs:int" />
+              <xs:element minOccurs="0" name="VehicleCost" nillable="true" type="xs:decimal">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element xmlns:q72="Rgs.Ufo" name="PrevPolicyDto" nillable="true" type="q72:PrevPolicyDto" />
+      <xs:complexType name="ArrayOfReservationCoefficient">
+        <xs:sequence>
+          <xs:element xmlns:q73="Rgs.Ufo" minOccurs="0" maxOccurs="unbounded" name="ReservationCoefficient" nillable="true" type="q73:ReservationCoefficient" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q74="Rgs.Ufo" name="ArrayOfReservationCoefficient" nillable="true" type="q74:ArrayOfReservationCoefficient" />
+      <xs:complexType name="ReservationCoefficient">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Value" nillable="true" type="xs:decimal">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="ValueId" nillable="true" type="xs:int">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q75="Rgs.Ufo" name="ReservationCoefficient" nillable="true" type="q75:ReservationCoefficient" />
+      <xs:complexType name="ArrayOfRiskObject">
+        <xs:sequence>
+          <xs:element xmlns:q76="Rgs.Ufo" minOccurs="0" maxOccurs="unbounded" name="RiskObject" nillable="true" type="q76:RiskObject" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q77="Rgs.Ufo" name="ArrayOfRiskObject" nillable="true" type="q77:ArrayOfRiskObject" />
+      <xs:complexType name="RiskObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Liability" nillable="true" type="xs:decimal">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="Number" type="xs:int" />
+          <xs:element minOccurs="0" name="Premium" nillable="true" type="xs:decimal">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="Tariff" nillable="true" type="xs:decimal">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="TypeId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q78="Rgs.Ufo" name="RiskObject" nillable="true" type="q78:RiskObject" />
+      <xs:complexType name="KaskoUnderwritingRequirements">
+        <xs:sequence>
+          <xs:element xmlns:q79="Rgs.Ufo" minOccurs="0" name="CO" nillable="true" type="q79:UnderwritingRequirement" />
+          <xs:element xmlns:q80="Rgs.Ufo" minOccurs="0" name="CSKA" nillable="true" type="q80:UnderwritingRequirement" />
+          <xs:element xmlns:q81="Rgs.Ufo" minOccurs="0" name="ControllerPse" nillable="true" type="q81:UnderwritingRequirement" />
+          <xs:element xmlns:q82="Rgs.Ufo" minOccurs="0" name="CorpZam" nillable="true" type="q82:UnderwritingRequirement" />
+          <xs:element xmlns:q83="Rgs.Ufo" minOccurs="0" name="Filial" nillable="true" type="q83:UnderwritingRequirement" />
+          <xs:element xmlns:q84="Rgs.Ufo" minOccurs="0" name="PartnerZam" nillable="true" type="q84:UnderwritingRequirement" />
+          <xs:element xmlns:q85="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ReasonIds" nillable="true" type="q85:ArrayOfdecimal" />
+          <xs:element xmlns:q86="Rgs.Ufo" minOccurs="0" name="Security" nillable="true" type="q86:UnderwritingRequirement" />
+          <xs:element minOccurs="0" name="VehicleNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q87="Rgs.Ufo" name="KaskoUnderwritingRequirements" nillable="true" type="q87:KaskoUnderwritingRequirements" />
+      <xs:complexType name="UnderwritingRequirement">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q88="Rgs.Ufo" name="UnderwritingRequirement" nillable="true" type="q88:UnderwritingRequirement" />
+      <xs:complexType name="ArrayOfVehCoveragesDto">
+        <xs:sequence>
+          <xs:element xmlns:q89="Rgs.Ufo" minOccurs="0" maxOccurs="unbounded" name="VehCoveragesDto" nillable="true" type="q89:VehCoveragesDto" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q90="Rgs.Ufo" name="ArrayOfVehCoveragesDto" nillable="true" type="q90:ArrayOfVehCoveragesDto" />
+      <xs:complexType name="VehCoveragesDto">
+        <xs:sequence>
+          <xs:element xmlns:q91="Rgs.Ufo" minOccurs="0" name="VehCovCoefficients" nillable="true" type="q91:ArrayOfVehCovCoefficientsDto" />
+          <xs:element minOccurs="0" name="VehCovPremium" nillable="true" type="xs:decimal">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="VehCovType" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="VehCovTypeName" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q92="Rgs.Ufo" name="VehCoveragesDto" nillable="true" type="q92:VehCoveragesDto" />
+      <xs:complexType name="ArrayOfVehCovCoefficientsDto">
+        <xs:sequence>
+          <xs:element xmlns:q93="Rgs.Ufo" minOccurs="0" maxOccurs="unbounded" name="VehCovCoefficientsDto" nillable="true" type="q93:VehCovCoefficientsDto" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q94="Rgs.Ufo" name="ArrayOfVehCovCoefficientsDto" nillable="true" type="q94:ArrayOfVehCovCoefficientsDto" />
+      <xs:complexType name="VehCovCoefficientsDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="VehCovCoefficientsId" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="VehCovCoefficientsName" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="VehCovCoefficientsValue" nillable="true" type="xs:decimal">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q95="Rgs.Ufo" name="VehCovCoefficientsDto" nillable="true" type="q95:VehCovCoefficientsDto" />
+      <xs:complexType name="ArrayOfFile">
+        <xs:sequence>
+          <xs:element xmlns:q96="Rgs.Ufo" minOccurs="0" maxOccurs="unbounded" name="File" nillable="true" type="q96:File" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q97="Rgs.Ufo" name="ArrayOfFile" nillable="true" type="q97:ArrayOfFile" />
+      <xs:complexType name="File">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Author" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DataBase64" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q98="Rgs.Ufo" name="File" nillable="true" type="q98:File" />
+      <xs:complexType name="Franchise">
+        <xs:sequence>
+          <xs:element name="TypeId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UnitId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Value" type="xs:decimal" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q99="Rgs.Ufo" name="Franchise" nillable="true" type="q99:Franchise" />
+      <xs:complexType name="ArrayOfVehicleStateInfo">
+        <xs:sequence>
+          <xs:element xmlns:q100="Rgs.Ufo" minOccurs="0" maxOccurs="unbounded" name="VehicleStateInfo" nillable="true" type="q100:VehicleStateInfo" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q101="Rgs.Ufo" name="ArrayOfVehicleStateInfo" nillable="true" type="q101:ArrayOfVehicleStateInfo" />
+      <xs:complexType name="VehicleStateInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CalculationId" type="ser:guid" />
+          <xs:element xmlns:q102="Rgs.Ufo" minOccurs="0" name="Comments" nillable="true" type="q102:ArrayOfVehicleComment" />
+          <xs:element minOccurs="0" name="QuotationId" type="ser:guid" />
+          <xs:element xmlns:q103="http://schemas.datacontract.org/2004/07/Rgs.UFO.Model.Enums" minOccurs="0" name="State" type="q103:ContractStatusNames" />
+          <xs:element xmlns:q104="http://schemas.datacontract.org/2004/07/Rgs.UFO.Model.Enums" minOccurs="0" name="Status" type="q104:ContractStatusNames" />
+          <xs:element minOccurs="0" name="VehicleNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q105="Rgs.Ufo" name="VehicleStateInfo" nillable="true" type="q105:VehicleStateInfo" />
+      <xs:complexType name="ArrayOfVehicleComment">
+        <xs:sequence>
+          <xs:element xmlns:q106="Rgs.Ufo" minOccurs="0" maxOccurs="unbounded" name="VehicleComment" nillable="true" type="q106:VehicleComment" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q107="Rgs.Ufo" name="ArrayOfVehicleComment" nillable="true" type="q107:ArrayOfVehicleComment" />
+      <xs:complexType name="VehicleComment">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Comment" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CommentatorGroupName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CommentatorName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+          <xs:element xmlns:q108="Rgs.Ufo" minOccurs="0" name="Group" type="q108:GroupNames" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q109="Rgs.Ufo" name="VehicleComment" nillable="true" type="q109:VehicleComment" />
+      <xs:simpleType name="GroupNames">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Error" />
+          <xs:enumeration value="Sb" />
+          <xs:enumeration value="Zks" />
+          <xs:enumeration value="Cska" />
+          <xs:enumeration value="UndCo" />
+          <xs:enumeration value="UndBranch" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element xmlns:q110="Rgs.Ufo" name="GroupNames" nillable="true" type="q110:GroupNames" />
+      <xs:element name="SendToApprove">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q111="Rgs.Ufo" minOccurs="0" name="additionalInfo" nillable="true" type="q111:UnderwritingAdditionalInfo" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="UnderwritingAdditionalInfo">
+        <xs:sequence>
+          <xs:element xmlns:q112="Rgs.Ufo" minOccurs="0" name="ApproveType" type="q112:ApproveType" />
+          <xs:element xmlns:q113="Rgs.Ufo" minOccurs="0" name="Beneficiary" nillable="true" type="q113:Beneficiary" />
+          <xs:element minOccurs="0" name="CommentSeller" nillable="true" type="xs:string" />
+          <xs:element xmlns:q114="Rgs.Ufo" minOccurs="0" name="Groups" nillable="true" type="q114:ArrayOfGroup" />
+          <xs:element xmlns:q115="Rgs.Ufo" name="Insurer" nillable="true" type="q115:PersonName" />
+          <xs:element minOccurs="0" name="IsStateContract" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="KeyClientCode" nillable="true" type="xs:string" />
+          <xs:element xmlns:q116="Rgs.Ufo" minOccurs="0" name="LeaseHolder" nillable="true" type="q116:LeaseHolder" />
+          <xs:element minOccurs="0" name="LessorId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="ProlongTillDate" nillable="true" type="xs:dateTime" />
+          <xs:element name="QuotationId" type="ser:guid" />
+          <xs:element minOccurs="0" name="SellerPhone" nillable="true" type="xs:string" />
+          <xs:element xmlns:q117="Rgs.Ufo" minOccurs="0" name="VehicleAdditionalInfos" nillable="true" type="q117:ArrayOfVehicleAdditionalInfo" />
+          <xs:element xmlns:q118="Rgs.Ufo" name="VehicleProlongations" nillable="true" type="q118:ArrayOfVehicleProlongation" />
+          <xs:element xmlns:q119="Rgs.Ufo" minOccurs="0" name="Insurant" nillable="true" type="q119:UnderwritingInsurantInfo" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q120="Rgs.Ufo" name="UnderwritingAdditionalInfo" nillable="true" type="q120:UnderwritingAdditionalInfo" />
+      <xs:simpleType name="ApproveType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="NonStandardQuotation" />
+          <xs:enumeration value="ProlongQuotation">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">5</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element xmlns:q121="Rgs.Ufo" name="ApproveType" nillable="true" type="q121:ApproveType" />
+      <xs:complexType name="ArrayOfGroup">
+        <xs:sequence>
+          <xs:element xmlns:q122="Rgs.Ufo" minOccurs="0" maxOccurs="unbounded" name="Group" nillable="true" type="q122:Group" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q123="Rgs.Ufo" name="ArrayOfGroup" nillable="true" type="q123:ArrayOfGroup" />
+      <xs:complexType name="Group">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Id" type="ser:guid" />
+          <xs:element minOccurs="0" name="IsGroupDisabled" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="VehiclesCount" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q124="Rgs.Ufo" name="Group" nillable="true" type="q124:Group" />
+      <xs:complexType name="LeaseHolder">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BirthDate" nillable="true" type="xs:dateTime">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q125="Rgs.Ufo" minOccurs="0" name="Document" nillable="true" type="q125:CommonDocument" />
+          <xs:element minOccurs="0" name="Inn" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Ogrn" nillable="true" type="xs:string" />
+          <xs:element xmlns:q126="Rgs.Ufo" minOccurs="0" name="Organization" nillable="true" type="q126:LegalEntity" />
+          <xs:element xmlns:q127="Rgs.Ufo" minOccurs="0" name="Person" nillable="true" type="q127:PersonName" />
+          <xs:element minOccurs="0" name="RegistrationAddressCode" nillable="true" type="xs:string" />
+          <xs:element xmlns:q128="Rgs.Ufo" minOccurs="0" name="RegistrationAddressCompany" nillable="true" type="q128:Address" />
+          <xs:element name="SubjectType" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q129="Rgs.Ufo" name="LeaseHolder" nillable="true" type="q129:LeaseHolder" />
+      <xs:complexType name="ArrayOfVehicleAdditionalInfo">
+        <xs:sequence>
+          <xs:element xmlns:q130="Rgs.Ufo" minOccurs="0" maxOccurs="unbounded" name="VehicleAdditionalInfo" nillable="true" type="q130:VehicleAdditionalInfo" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q131="Rgs.Ufo" name="ArrayOfVehicleAdditionalInfo" nillable="true" type="q131:ArrayOfVehicleAdditionalInfo" />
+      <xs:complexType name="VehicleAdditionalInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BrandNamePrint" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DocType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="GroupId" nillable="true" type="ser:guid" />
+          <xs:element minOccurs="0" name="IncompleteDocuments" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="InspectionDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="IsNeedAddAgreement5" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ModelNamePrint" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Number" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SellerCommentOnTS" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Series" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UnderwriterCommentOnTS" nillable="true" type="xs:string" />
+          <xs:element name="VehicleId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="VehicleKeysCount" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q132="Rgs.Ufo" name="VehicleAdditionalInfo" nillable="true" type="q132:VehicleAdditionalInfo" />
+      <xs:complexType name="ArrayOfVehicleProlongation">
+        <xs:sequence>
+          <xs:element xmlns:q133="Rgs.Ufo" minOccurs="0" maxOccurs="unbounded" name="VehicleProlongation" nillable="true" type="q133:VehicleProlongation" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q134="Rgs.Ufo" name="ArrayOfVehicleProlongation" nillable="true" type="q134:ArrayOfVehicleProlongation" />
+      <xs:complexType name="VehicleProlongation">
+        <xs:sequence>
+          <xs:element name="IsPrefProlongation" type="xs:boolean" />
+          <xs:element name="VehicleId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q135="Rgs.Ufo" name="VehicleProlongation" nillable="true" type="q135:VehicleProlongation" />
+      <xs:complexType name="UnderwritingInsurantInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PlaceOfBirth" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q136="Rgs.Ufo" name="UnderwritingInsurantInfo" nillable="true" type="q136:UnderwritingInsurantInfo" />
+      <xs:element name="SendToApproveResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q137="RGS.UFO" minOccurs="0" name="SendToApproveResult" nillable="true" type="q137:OperationResultOfContractStatusNamesmxVaabBO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="EarlyApprove">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q138="Rgs.Ufo" minOccurs="0" name="earlyApproveInfo" nillable="true" type="q138:EarlyApproveInfo" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="EarlyApproveInfo">
+        <xs:sequence>
+          <xs:element name="QuotationId" type="ser:guid" />
+          <xs:element xmlns:q139="http://schemas.microsoft.com/2003/10/Serialization/Arrays" name="VehicleNumbers" nillable="true" type="q139:ArrayOfstring" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q140="Rgs.Ufo" name="EarlyApproveInfo" nillable="true" type="q140:EarlyApproveInfo" />
+      <xs:element name="EarlyApproveResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q141="RGS.UFO" minOccurs="0" name="EarlyApproveResult" nillable="true" type="q141:OperationResultOfEarlyApproveResultoTurZuT3" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="EarlyApproveResult">
+        <xs:sequence>
+          <xs:element xmlns:q142="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ErrorsVehicleNumbers" nillable="true" type="q142:ArrayOfstring" />
+          <xs:element minOccurs="0" name="QuotationId" type="ser:guid" />
+          <xs:element xmlns:q143="Rgs.Ufo" minOccurs="0" name="State" type="q143:EarlyApproveResulState" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q144="Rgs.Ufo" name="EarlyApproveResult" nillable="true" type="q144:EarlyApproveResult" />
+      <xs:simpleType name="EarlyApproveResulState">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="SuccesEarlyApprove">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="ErrorEarlyApprove">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element xmlns:q145="Rgs.Ufo" name="EarlyApproveResulState" nillable="true" type="q145:EarlyApproveResulState" />
+      <xs:element name="AddNonTypeDocument">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="contractId" type="ser:guid" />
+            <xs:element xmlns:q146="Rgs.Ufo" minOccurs="0" name="documentDto" nillable="true" type="q146:NonTypeDocumentInput" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="NonTypeDocumentInput">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DataBase64" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q147="Rgs.Ufo" name="NonTypeDocumentInput" nillable="true" type="q147:NonTypeDocumentInput" />
+      <xs:element name="AddNonTypeDocumentResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q148="RGS.UFO" minOccurs="0" name="AddNonTypeDocumentResult" nillable="true" type="q148:OperationResultOfguid" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetNonTypeDocuments">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="contractId" type="ser:guid" />
+            <xs:element xmlns:q149="Rgs.Ufo" minOccurs="0" name="systemType" nillable="true" type="q149:NonTypeDocumentSystemType" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:simpleType name="NonTypeDocumentSystemType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="External" />
+          <xs:enumeration value="Internal" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element xmlns:q150="Rgs.Ufo" name="NonTypeDocumentSystemType" nillable="true" type="q150:NonTypeDocumentSystemType" />
+      <xs:element name="GetNonTypeDocumentsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q151="RGS.UFO" minOccurs="0" name="GetNonTypeDocumentsResult" nillable="true" type="q151:OperationResultOfArrayOfNonTypeDocumentoTurZuT3" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="ArrayOfNonTypeDocument">
+        <xs:sequence>
+          <xs:element xmlns:q152="Rgs.Ufo" minOccurs="0" maxOccurs="unbounded" name="NonTypeDocument" nillable="true" type="q152:NonTypeDocument" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element xmlns:q153="Rgs.Ufo" name="ArrayOfNonTypeDocument" nillable="true" type="q153:ArrayOfNonTypeDocument" />
+      <xs:complexType name="NonTypeDocument">
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:q154="Rgs.Ufo" base="q154:NonTypeDocumentInput">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="FileKey" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="FileSize" type="xs:int" />
+              <xs:element minOccurs="0" name="Id" type="ser:guid" />
+              <xs:element minOccurs="0" name="LoadDate" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="ModificationDate" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="SystemType" type="q154:NonTypeDocumentSystemType" />
+              <xs:element minOccurs="0" name="UserCreatorId" type="ser:guid" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element xmlns:q155="Rgs.Ufo" name="NonTypeDocument" nillable="true" type="q155:NonTypeDocument" />
+      <xs:element name="GetNonTypeDocument">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="id" type="ser:guid" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetNonTypeDocumentResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q156="RGS.UFO" minOccurs="0" name="GetNonTypeDocumentResult" nillable="true" type="q156:OperationResultOfNonTypeDocumentoTurZuT3" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeleteDocument">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="id" type="ser:guid" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeleteDocumentResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q157="RGS.UFO" minOccurs="0" name="DeleteDocumentResult" nillable="true" type="q157:OperationResultOfguid" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetNonTypeDocumentsArchive">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="contractId" type="ser:guid" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetNonTypeDocumentsArchiveResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q158="RGS.UFO" minOccurs="0" name="GetNonTypeDocumentsArchiveResult" nillable="true" type="q158:OperationResultOfbase64Binary" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="anyType" nillable="true" type="xs:anyType" />
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+      <xs:element name="boolean" nillable="true" type="xs:boolean" />
+      <xs:element name="byte" nillable="true" type="xs:byte" />
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="decimal" nillable="true" type="xs:decimal" />
+      <xs:element name="double" nillable="true" type="xs:double" />
+      <xs:element name="float" nillable="true" type="xs:float" />
+      <xs:element name="int" nillable="true" type="xs:int" />
+      <xs:element name="long" nillable="true" type="xs:long" />
+      <xs:element name="QName" nillable="true" type="xs:QName" />
+      <xs:element name="short" nillable="true" type="xs:short" />
+      <xs:element name="string" nillable="true" type="xs:string" />
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+      <xs:element name="char" nillable="true" type="tns:char" />
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int" />
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration" />
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid" />
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName" />
+      <xs:attribute name="Id" type="xs:ID" />
+      <xs:attribute name="Ref" type="xs:IDREF" />
+    </xs:schema>
+    <xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="RGS.UFO" elementFormDefault="qualified" targetNamespace="RGS.UFO" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import />
+      <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/Rgs.UFO.Model.Enums" />
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic" />
+      <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xs:import namespace="Rgs.Ufo" />
+      <xs:complexType name="OperationResultOfContractStatusNamesmxVaabBO">
+        <xs:annotation>
+          <xs:appinfo>
+            <GenericType Name="OperationResultOf{0}{#}" Namespace="RGS.UFO" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+              <GenericParameter Name="ContractStatusNames" Namespace="http://schemas.datacontract.org/2004/07/Rgs.UFO.Model.Enums" />
+            </GenericType>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AdditionalData" nillable="true" type="AdditionalPaymentData" />
+          <xs:element minOccurs="0" name="CorrelationId" type="ser:guid" />
+          <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Rgs.UFO.Model.Enums" minOccurs="0" name="Data" type="q1:ContractStatusNames" />
+          <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="GrouppedErrorMessage" nillable="true" type="q2:ArrayOfKeyValuePairOfstringArrayOfstringty7Ep6D1" />
+          <xs:element minOccurs="0" name="IsSuccess" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ServiceVersion" nillable="true" type="xs:string" />
+          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="ValidationCodeErrors" nillable="true" type="q3:ArrayOfKeyValuePairOfstringstring" />
+          <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ValidationErrors" nillable="true" type="q4:ArrayOfstring" />
+          <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="WarningMessages" nillable="true" type="q5:ArrayOfstring" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="OperationResultOfContractStatusNamesmxVaabBO" nillable="true" type="tns:OperationResultOfContractStatusNamesmxVaabBO" />
+      <xs:complexType name="OperationResultOfQuotationStateInfooTurZuT3">
+        <xs:annotation>
+          <xs:appinfo>
+            <GenericType Name="OperationResultOf{0}{#}" Namespace="RGS.UFO" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+              <GenericParameter Name="QuotationStateInfo" Namespace="Rgs.Ufo" />
+            </GenericType>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AdditionalData" nillable="true" type="AdditionalPaymentData" />
+          <xs:element minOccurs="0" name="CorrelationId" type="ser:guid" />
+          <xs:element xmlns:q6="Rgs.Ufo" minOccurs="0" name="Data" nillable="true" type="q6:QuotationStateInfo" />
+          <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+          <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="GrouppedErrorMessage" nillable="true" type="q7:ArrayOfKeyValuePairOfstringArrayOfstringty7Ep6D1" />
+          <xs:element minOccurs="0" name="IsSuccess" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ServiceVersion" nillable="true" type="xs:string" />
+          <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="ValidationCodeErrors" nillable="true" type="q8:ArrayOfKeyValuePairOfstringstring" />
+          <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ValidationErrors" nillable="true" type="q9:ArrayOfstring" />
+          <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="WarningMessages" nillable="true" type="q10:ArrayOfstring" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="OperationResultOfQuotationStateInfooTurZuT3" nillable="true" type="tns:OperationResultOfQuotationStateInfooTurZuT3" />
+      <xs:complexType name="OperationResultOfEarlyApproveResultoTurZuT3">
+        <xs:annotation>
+          <xs:appinfo>
+            <GenericType Name="OperationResultOf{0}{#}" Namespace="RGS.UFO" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+              <GenericParameter Name="EarlyApproveResult" Namespace="Rgs.Ufo" />
+            </GenericType>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AdditionalData" nillable="true" type="AdditionalPaymentData" />
+          <xs:element minOccurs="0" name="CorrelationId" type="ser:guid" />
+          <xs:element xmlns:q11="Rgs.Ufo" minOccurs="0" name="Data" nillable="true" type="q11:EarlyApproveResult" />
+          <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+          <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="GrouppedErrorMessage" nillable="true" type="q12:ArrayOfKeyValuePairOfstringArrayOfstringty7Ep6D1" />
+          <xs:element minOccurs="0" name="IsSuccess" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ServiceVersion" nillable="true" type="xs:string" />
+          <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="ValidationCodeErrors" nillable="true" type="q13:ArrayOfKeyValuePairOfstringstring" />
+          <xs:element xmlns:q14="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ValidationErrors" nillable="true" type="q14:ArrayOfstring" />
+          <xs:element xmlns:q15="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="WarningMessages" nillable="true" type="q15:ArrayOfstring" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="OperationResultOfEarlyApproveResultoTurZuT3" nillable="true" type="tns:OperationResultOfEarlyApproveResultoTurZuT3" />
+      <xs:complexType name="OperationResultOfguid">
+        <xs:annotation>
+          <xs:appinfo>
+            <GenericType Name="OperationResultOf{0}{#}" Namespace="RGS.UFO" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+              <GenericParameter Name="guid" Namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+            </GenericType>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AdditionalData" nillable="true" type="AdditionalPaymentData" />
+          <xs:element minOccurs="0" name="CorrelationId" type="ser:guid" />
+          <xs:element minOccurs="0" name="Data" type="ser:guid" />
+          <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+          <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="GrouppedErrorMessage" nillable="true" type="q16:ArrayOfKeyValuePairOfstringArrayOfstringty7Ep6D1" />
+          <xs:element minOccurs="0" name="IsSuccess" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ServiceVersion" nillable="true" type="xs:string" />
+          <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="ValidationCodeErrors" nillable="true" type="q17:ArrayOfKeyValuePairOfstringstring" />
+          <xs:element xmlns:q18="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ValidationErrors" nillable="true" type="q18:ArrayOfstring" />
+          <xs:element xmlns:q19="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="WarningMessages" nillable="true" type="q19:ArrayOfstring" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="OperationResultOfguid" nillable="true" type="tns:OperationResultOfguid" />
+      <xs:complexType name="OperationResultOfArrayOfNonTypeDocumentoTurZuT3">
+        <xs:annotation>
+          <xs:appinfo>
+            <GenericType Name="OperationResultOf{0}{#}" Namespace="RGS.UFO" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+              <GenericParameter Name="ArrayOfNonTypeDocument" Namespace="Rgs.Ufo" />
+            </GenericType>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AdditionalData" nillable="true" type="AdditionalPaymentData" />
+          <xs:element minOccurs="0" name="CorrelationId" type="ser:guid" />
+          <xs:element xmlns:q20="Rgs.Ufo" minOccurs="0" name="Data" nillable="true" type="q20:ArrayOfNonTypeDocument" />
+          <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+          <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="GrouppedErrorMessage" nillable="true" type="q21:ArrayOfKeyValuePairOfstringArrayOfstringty7Ep6D1" />
+          <xs:element minOccurs="0" name="IsSuccess" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ServiceVersion" nillable="true" type="xs:string" />
+          <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="ValidationCodeErrors" nillable="true" type="q22:ArrayOfKeyValuePairOfstringstring" />
+          <xs:element xmlns:q23="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ValidationErrors" nillable="true" type="q23:ArrayOfstring" />
+          <xs:element xmlns:q24="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="WarningMessages" nillable="true" type="q24:ArrayOfstring" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="OperationResultOfArrayOfNonTypeDocumentoTurZuT3" nillable="true" type="tns:OperationResultOfArrayOfNonTypeDocumentoTurZuT3" />
+      <xs:complexType name="OperationResultOfNonTypeDocumentoTurZuT3">
+        <xs:annotation>
+          <xs:appinfo>
+            <GenericType Name="OperationResultOf{0}{#}" Namespace="RGS.UFO" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+              <GenericParameter Name="NonTypeDocument" Namespace="Rgs.Ufo" />
+            </GenericType>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AdditionalData" nillable="true" type="AdditionalPaymentData" />
+          <xs:element minOccurs="0" name="CorrelationId" type="ser:guid" />
+          <xs:element xmlns:q25="Rgs.Ufo" minOccurs="0" name="Data" nillable="true" type="q25:NonTypeDocument" />
+          <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+          <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="GrouppedErrorMessage" nillable="true" type="q26:ArrayOfKeyValuePairOfstringArrayOfstringty7Ep6D1" />
+          <xs:element minOccurs="0" name="IsSuccess" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ServiceVersion" nillable="true" type="xs:string" />
+          <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="ValidationCodeErrors" nillable="true" type="q27:ArrayOfKeyValuePairOfstringstring" />
+          <xs:element xmlns:q28="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ValidationErrors" nillable="true" type="q28:ArrayOfstring" />
+          <xs:element xmlns:q29="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="WarningMessages" nillable="true" type="q29:ArrayOfstring" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="OperationResultOfNonTypeDocumentoTurZuT3" nillable="true" type="tns:OperationResultOfNonTypeDocumentoTurZuT3" />
+      <xs:complexType name="OperationResultOfbase64Binary">
+        <xs:annotation>
+          <xs:appinfo>
+            <GenericType Name="OperationResultOf{0}{#}" Namespace="RGS.UFO" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+              <GenericParameter Name="base64Binary" Namespace="http://www.w3.org/2001/XMLSchema" />
+            </GenericType>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AdditionalData" nillable="true" type="AdditionalPaymentData" />
+          <xs:element minOccurs="0" name="CorrelationId" type="ser:guid" />
+          <xs:element minOccurs="0" name="Data" nillable="true" type="xs:base64Binary" />
+          <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+          <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="GrouppedErrorMessage" nillable="true" type="q30:ArrayOfKeyValuePairOfstringArrayOfstringty7Ep6D1" />
+          <xs:element minOccurs="0" name="IsSuccess" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ServiceVersion" nillable="true" type="xs:string" />
+          <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="ValidationCodeErrors" nillable="true" type="q31:ArrayOfKeyValuePairOfstringstring" />
+          <xs:element xmlns:q32="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ValidationErrors" nillable="true" type="q32:ArrayOfstring" />
+          <xs:element xmlns:q33="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="WarningMessages" nillable="true" type="q33:ArrayOfstring" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="OperationResultOfbase64Binary" nillable="true" type="tns:OperationResultOfbase64Binary" />
+    </xs:schema>
+    <xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="AdditionalPaymentData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DatePay" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="PayID" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="AdditionalPaymentData" nillable="true" type="AdditionalPaymentData" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Rgs.UFO.Model.Enums" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Rgs.UFO.Model.Enums" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xs:simpleType name="ContractStatusNames">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="None" />
+          <xs:enumeration value="Project" />
+          <xs:enumeration value="Active" />
+          <xs:enumeration value="Finish" />
+          <xs:enumeration value="StandartCalcNPD" />
+          <xs:enumeration value="NonstandartCalcNPD" />
+          <xs:enumeration value="StandartCalcPPD" />
+          <xs:enumeration value="NonstandartCalcPPD" />
+          <xs:enumeration value="NotRequired">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">9</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Required">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">10</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="OnApproval">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">11</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Approval">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">12</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Reject">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">13</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Withdrawn">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">14</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="DataRequest">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">15</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="OnPreliminaryApproval">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">16</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="PreliminaryApproval">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">17</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="PreliminaryReject">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">18</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="PreliminaryWithdrawn">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">19</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Contract">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">20</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Cancelled">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">21</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="ProbablyDealCommitted">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">22</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="SubmittedToAccounting">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">23</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="TakenIntoAccount">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">24</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Processed">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">25</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="PreliminaryProcessed">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">26</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="ContractStatusNames" nillable="true" type="tns:ContractStatusNames" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/System.Collections.Generic" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xs:complexType name="ArrayOfKeyValuePairOfstringArrayOfstringty7Ep6D1">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValuePairOfstringArrayOfstringty7Ep6D1" type="tns:KeyValuePairOfstringArrayOfstringty7Ep6D1" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfKeyValuePairOfstringArrayOfstringty7Ep6D1" nillable="true" type="tns:ArrayOfKeyValuePairOfstringArrayOfstringty7Ep6D1" />
+      <xs:complexType name="KeyValuePairOfstringArrayOfstringty7Ep6D1">
+        <xs:annotation>
+          <xs:appinfo>
+            <GenericType Name="KeyValuePairOf{0}{1}{#}" Namespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+              <GenericParameter Name="string" Namespace="http://www.w3.org/2001/XMLSchema" />
+              <GenericParameter Name="ArrayOfstring" Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+            </GenericType>
+            <IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element name="key" nillable="true" type="xs:string" />
+          <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" name="value" nillable="true" type="q1:ArrayOfstring" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="KeyValuePairOfstringArrayOfstringty7Ep6D1" nillable="true" type="tns:KeyValuePairOfstringArrayOfstringty7Ep6D1" />
+      <xs:complexType name="ArrayOfKeyValuePairOfstringstring">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValuePairOfstringstring" type="tns:KeyValuePairOfstringstring" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfKeyValuePairOfstringstring" nillable="true" type="tns:ArrayOfKeyValuePairOfstringstring" />
+      <xs:complexType name="KeyValuePairOfstringstring">
+        <xs:annotation>
+          <xs:appinfo>
+            <GenericType Name="KeyValuePairOf{0}{1}{#}" Namespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+              <GenericParameter Name="string" Namespace="http://www.w3.org/2001/XMLSchema" />
+              <GenericParameter Name="string" Namespace="http://www.w3.org/2001/XMLSchema" />
+            </GenericType>
+            <IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element name="key" nillable="true" type="xs:string" />
+          <xs:element name="value" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="KeyValuePairOfstringstring" nillable="true" type="tns:KeyValuePairOfstringstring" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="ArrayOfstring">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfstring" nillable="true" type="tns:ArrayOfstring" />
+      <xs:complexType name="ArrayOfdecimal">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="decimal" type="xs:decimal" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfdecimal" nillable="true" type="tns:ArrayOfdecimal" />
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="IUnderwritingService_Withdraw_InputMessage">
+    <wsdl:part name="parameters" element="tns:Withdraw" />
+  </wsdl:message>
+  <wsdl:message name="IUnderwritingService_Withdraw_OutputMessage">
+    <wsdl:part name="parameters" element="tns:WithdrawResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUnderwritingService_CheckStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckStatus" />
+  </wsdl:message>
+  <wsdl:message name="IUnderwritingService_CheckStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUnderwritingService_SendToApprove_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendToApprove" />
+  </wsdl:message>
+  <wsdl:message name="IUnderwritingService_SendToApprove_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendToApproveResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUnderwritingService_EarlyApprove_InputMessage">
+    <wsdl:part name="parameters" element="tns:EarlyApprove" />
+  </wsdl:message>
+  <wsdl:message name="IUnderwritingService_EarlyApprove_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EarlyApproveResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUnderwritingService_AddNonTypeDocument_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddNonTypeDocument" />
+  </wsdl:message>
+  <wsdl:message name="IUnderwritingService_AddNonTypeDocument_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddNonTypeDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUnderwritingService_GetNonTypeDocuments_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNonTypeDocuments" />
+  </wsdl:message>
+  <wsdl:message name="IUnderwritingService_GetNonTypeDocuments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNonTypeDocumentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUnderwritingService_GetNonTypeDocument_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNonTypeDocument" />
+  </wsdl:message>
+  <wsdl:message name="IUnderwritingService_GetNonTypeDocument_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNonTypeDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUnderwritingService_DeleteDocument_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteDocument" />
+  </wsdl:message>
+  <wsdl:message name="IUnderwritingService_DeleteDocument_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUnderwritingService_GetNonTypeDocumentsArchive_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNonTypeDocumentsArchive" />
+  </wsdl:message>
+  <wsdl:message name="IUnderwritingService_GetNonTypeDocumentsArchive_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNonTypeDocumentsArchiveResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IUnderwritingService">
+    <wsdl:operation name="Withdraw">
+      <wsdl:input wsaw:Action="Rgs.Ufo/IUnderwritingService/Withdraw" message="tns:IUnderwritingService_Withdraw_InputMessage" />
+      <wsdl:output wsaw:Action="Rgs.Ufo/IUnderwritingService/WithdrawResponse" message="tns:IUnderwritingService_Withdraw_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckStatus">
+      <wsdl:input wsaw:Action="Rgs.Ufo/IUnderwritingService/CheckStatus" message="tns:IUnderwritingService_CheckStatus_InputMessage" />
+      <wsdl:output wsaw:Action="Rgs.Ufo/IUnderwritingService/CheckStatusResponse" message="tns:IUnderwritingService_CheckStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendToApprove">
+      <wsdl:input wsaw:Action="Rgs.Ufo/IUnderwritingService/SendToApprove" message="tns:IUnderwritingService_SendToApprove_InputMessage" />
+      <wsdl:output wsaw:Action="Rgs.Ufo/IUnderwritingService/SendToApproveResponse" message="tns:IUnderwritingService_SendToApprove_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EarlyApprove">
+      <wsdl:input wsaw:Action="Rgs.Ufo/IUnderwritingService/EarlyApprove" message="tns:IUnderwritingService_EarlyApprove_InputMessage" />
+      <wsdl:output wsaw:Action="Rgs.Ufo/IUnderwritingService/EarlyApproveResponse" message="tns:IUnderwritingService_EarlyApprove_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddNonTypeDocument">
+      <wsdl:input wsaw:Action="Rgs.Ufo/IUnderwritingService/AddNonTypeDocument" message="tns:IUnderwritingService_AddNonTypeDocument_InputMessage" />
+      <wsdl:output wsaw:Action="Rgs.Ufo/IUnderwritingService/AddNonTypeDocumentResponse" message="tns:IUnderwritingService_AddNonTypeDocument_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNonTypeDocuments">
+      <wsdl:input wsaw:Action="Rgs.Ufo/IUnderwritingService/GetNonTypeDocuments" message="tns:IUnderwritingService_GetNonTypeDocuments_InputMessage" />
+      <wsdl:output wsaw:Action="Rgs.Ufo/IUnderwritingService/GetNonTypeDocumentsResponse" message="tns:IUnderwritingService_GetNonTypeDocuments_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNonTypeDocument">
+      <wsdl:input wsaw:Action="Rgs.Ufo/IUnderwritingService/GetNonTypeDocument" message="tns:IUnderwritingService_GetNonTypeDocument_InputMessage" />
+      <wsdl:output wsaw:Action="Rgs.Ufo/IUnderwritingService/GetNonTypeDocumentResponse" message="tns:IUnderwritingService_GetNonTypeDocument_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDocument">
+      <wsdl:input wsaw:Action="Rgs.Ufo/IUnderwritingService/DeleteDocument" message="tns:IUnderwritingService_DeleteDocument_InputMessage" />
+      <wsdl:output wsaw:Action="Rgs.Ufo/IUnderwritingService/DeleteDocumentResponse" message="tns:IUnderwritingService_DeleteDocument_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNonTypeDocumentsArchive">
+      <wsdl:input wsaw:Action="Rgs.Ufo/IUnderwritingService/GetNonTypeDocumentsArchive" message="tns:IUnderwritingService_GetNonTypeDocumentsArchive_InputMessage" />
+      <wsdl:output wsaw:Action="Rgs.Ufo/IUnderwritingService/GetNonTypeDocumentsArchiveResponse" message="tns:IUnderwritingService_GetNonTypeDocumentsArchive_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSHttpBinding_IUnderwritingService" type="tns:IUnderwritingService">
+    <wsp:PolicyReference URI="#WSHttpBinding_IUnderwritingService_policy" />
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Withdraw">
+      <soap12:operation soapAction="Rgs.Ufo/IUnderwritingService/Withdraw" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckStatus">
+      <soap12:operation soapAction="Rgs.Ufo/IUnderwritingService/CheckStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendToApprove">
+      <soap12:operation soapAction="Rgs.Ufo/IUnderwritingService/SendToApprove" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EarlyApprove">
+      <soap12:operation soapAction="Rgs.Ufo/IUnderwritingService/EarlyApprove" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNonTypeDocument">
+      <soap12:operation soapAction="Rgs.Ufo/IUnderwritingService/AddNonTypeDocument" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNonTypeDocuments">
+      <soap12:operation soapAction="Rgs.Ufo/IUnderwritingService/GetNonTypeDocuments" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNonTypeDocument">
+      <soap12:operation soapAction="Rgs.Ufo/IUnderwritingService/GetNonTypeDocument" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDocument">
+      <soap12:operation soapAction="Rgs.Ufo/IUnderwritingService/DeleteDocument" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNonTypeDocumentsArchive">
+      <soap12:operation soapAction="Rgs.Ufo/IUnderwritingService/GetNonTypeDocumentsArchive" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CustomBinding_IUnderwritingService" type="tns:IUnderwritingService">
+    <wsp:PolicyReference URI="#CustomBinding_IUnderwritingService_policy" />
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Withdraw">
+      <soap12:operation soapAction="Rgs.Ufo/IUnderwritingService/Withdraw" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckStatus">
+      <soap12:operation soapAction="Rgs.Ufo/IUnderwritingService/CheckStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendToApprove">
+      <soap12:operation soapAction="Rgs.Ufo/IUnderwritingService/SendToApprove" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EarlyApprove">
+      <soap12:operation soapAction="Rgs.Ufo/IUnderwritingService/EarlyApprove" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNonTypeDocument">
+      <soap12:operation soapAction="Rgs.Ufo/IUnderwritingService/AddNonTypeDocument" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNonTypeDocuments">
+      <soap12:operation soapAction="Rgs.Ufo/IUnderwritingService/GetNonTypeDocuments" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNonTypeDocument">
+      <soap12:operation soapAction="Rgs.Ufo/IUnderwritingService/GetNonTypeDocument" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDocument">
+      <soap12:operation soapAction="Rgs.Ufo/IUnderwritingService/DeleteDocument" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNonTypeDocumentsArchive">
+      <soap12:operation soapAction="Rgs.Ufo/IUnderwritingService/GetNonTypeDocumentsArchive" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MetadataExchangeHttpsBinding_IUnderwritingService" type="tns:IUnderwritingService">
+    <wsp:PolicyReference URI="#MetadataExchangeHttpsBinding_IUnderwritingService_policy" />
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Withdraw">
+      <soap12:operation soapAction="Rgs.Ufo/IUnderwritingService/Withdraw" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckStatus">
+      <soap12:operation soapAction="Rgs.Ufo/IUnderwritingService/CheckStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendToApprove">
+      <soap12:operation soapAction="Rgs.Ufo/IUnderwritingService/SendToApprove" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EarlyApprove">
+      <soap12:operation soapAction="Rgs.Ufo/IUnderwritingService/EarlyApprove" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNonTypeDocument">
+      <soap12:operation soapAction="Rgs.Ufo/IUnderwritingService/AddNonTypeDocument" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNonTypeDocuments">
+      <soap12:operation soapAction="Rgs.Ufo/IUnderwritingService/GetNonTypeDocuments" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNonTypeDocument">
+      <soap12:operation soapAction="Rgs.Ufo/IUnderwritingService/GetNonTypeDocument" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDocument">
+      <soap12:operation soapAction="Rgs.Ufo/IUnderwritingService/DeleteDocument" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNonTypeDocumentsArchive">
+      <soap12:operation soapAction="Rgs.Ufo/IUnderwritingService/GetNonTypeDocumentsArchive" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UnderwritingService">
+    <wsdl:port name="WSHttpBinding_IUnderwritingService" binding="tns:WSHttpBinding_IUnderwritingService">
+      <soap12:address location="https://ufo-fe-stage-02.rgs.ru/UnderwritingService.svc" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>https://ufo-fe-stage-02.rgs.ru/UnderwritingService.svc</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="MetadataExchangeHttpsBinding_IUnderwritingService" binding="tns:MetadataExchangeHttpsBinding_IUnderwritingService">
+      <soap12:address location="https://ufo-fe-stage-02.rgs.ru/UnderwritingService.svc/mex" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>https://ufo-fe-stage-02.rgs.ru/UnderwritingService.svc/mex</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="CustomBinding_IUnderwritingService" binding="tns:CustomBinding_IUnderwritingService">
+      <soap12:address location="http://ufot.rgs.ru/UnderwritingService.svc" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>http://ufot.rgs.ru/UnderwritingService.svc</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:wsp="http://www.w3.org/ns/ws-policy/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://filestore.rgs.ru/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://web.filestore.rgs.ru/" name="FileStoreAPI" targetNamespace="http://filestore.rgs.ru/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp="http://www.w3.org/ns/ws-policy/" xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702" wsu:Id="FileStoreAPIServicePolicy">
+    <sp:SupportingTokens>
+      <wsp:Policy>
+        <sp:UsernameToken sp:IncludeToken="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702/IncludeToken/AlwaysToRecipient">
+          <wsp:Policy>
+            <sp:HashPassword />
+          </wsp:Policy>
+        </sp:UsernameToken>
+      </wsp:Policy>
+    </sp:SupportingTokens>
+  </wsp:Policy>
+  <wsdl:import namespace="http://web.filestore.rgs.ru/" location="http://filestore-service.os-preprod.rgs.ru/services/filestore?wsdl=FileStoreAPI.wsdl" />
+  <wsdl:types />
+  <wsdl:binding name="FileStoreAPISoapBinding" type="ns1:FileStoreAPI">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="createFile">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="createFile">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="createFileResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteFile">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="deleteFile">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="deleteFileResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateFile">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="updateFile">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="updateFileResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="readSignature">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="readSignature">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="readSignatureResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="existsFile">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="existsFile">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="existsFileResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="readFile">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="readFile">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="readFileResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FileStoreAPI">
+    <wsp:PolicyReference URI="#FileStoreAPIServicePolicy" />
+    <wsdl:port name="FileStoreAPIPort" binding="tns:FileStoreAPISoapBinding">
+      <soap:address location="http://filestore-service.os-preprod.rgs.ru/services/filestore" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
