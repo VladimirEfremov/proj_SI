@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Results>
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://arm-apo.ss.rgs.ru/IDB_RSA_Test/IBD_RSA_WebServ.dll/wsdl/IIBD_RSA_WebServ" filename="IIBD_RSA_WebServservice.wsdl" />
-  </Results>
-</DiscoveryClientResultsFile>

@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Results>
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://ibqa.rgs.ru:7003/IBSS/SoftRaterWSSoap11HttpPort?WSDL" filename="SoftRaterWS.wsdl" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://ibqa.rgs.ru:7003/IBSS/SoftRaterWSSoap11HttpPort?xsd=1" filename="SoftRaterWSSoap11HttpPort.xsd" />
-  </Results>
-</DiscoveryClientResultsFile>
